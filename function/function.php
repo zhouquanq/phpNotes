@@ -283,6 +283,33 @@ function arr_search($str,$arr,$index=false){
     return $key;
 }
 
+/**
+ * php强制下载文件
+ */
+function download($filename){ 
+    if ((isset($filename))&&(file_exists($filename))){ 
+        header("Content-length: ".filesize($filename)); 
+        header('Content-Type: application/octet-stream'); 
+        header('Content-Disposition: attachment; filename="' . $filename . '"'); 
+        readfile("$filename"); 
+    } else { 
+        echo "Looks like file does not exist!"; 
+    } 
+}
+
+/**
+ * php防止SQL注入
+ */
+function injCheck($sql_str) {  
+    $check = preg_match('/select|insert|update|delete|/*|*|../|./|union|into|load_file|outfile/', $sql_str);
+    if ($check) { 
+        echo '非法字符！！'; 
+        exit; 
+    } else { 
+        return $sql_str; 
+    } 
+}
+
 
 
 
