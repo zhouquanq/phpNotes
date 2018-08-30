@@ -11,7 +11,7 @@ function p($data){
 
 
 //生成兑奖码
-// $db = M("tb_gift2","","mysql://root:123456@192.168.0.20:3306/ygo_login");
+//$db = M("tb_gift2","","mysql://root:123456@192.168.0.20:3306/ygo_login");
 function verifyCode($db,$code = null){
     $newCode = createCode();
     //判断兑奖码是否重复，重复就递归生成
