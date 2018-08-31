@@ -1,0 +1,191 @@
+yum -y install php-devel    (可以用phpsize命令)
+
+
+服务器端主要是安装memcache服务器端，目前的最新版本是 memcached-v1.4.4 。
+下载：http://memcached.googlecode.com/files/memcached-1.4.4.tar.gz
+另外，Memcache用到了libevent这个库用于Socket的处理，所以还需要安装libevent，
+
+libevent的最新版本是libevent-1.4.13-stable。（如果你的系统已经安装了libevent，可以不用安装）
+官网：http://www.monkey.org/~provos/libevent/
+下载：http://www.monkey.org/~provos/libevent-1.4.13-stable.tar.gz
+
+准备Memcached的PHP扩展的源码安装包：
+官网：http://pecl.php.net/get/memcache-2.2.5.tgz
+
+Linux指令下载：
+复制代码
+ 代码如下:
+
+wget http://memcached.googlecode.com/files/memcached-1.4.4.tar.gz 
+wget http://www.monkey.org/~provos/libevent-1.4.13-stable.tar.gz 
+wget http://pecl.php.net/get/memcache-2.2.5.tgz 
+
+二、安装与配置 
+1、先安装libevent 
+复制代码
+ 代码如下:
+
+tar zxvf libevent-1.4.13-stable.tar.gz 
+cd libevent-1.4.13-stable 
+./configure --prefix=/usr 
+make 
+make install 
+
+
+2、测试libevent是否安装成功 
+复制代码
+ 代码如下:
+
+ls -al /usr/lib | grep libevent 
+libevent-1.1a.so.1 
+libevent-1.1a.so.1.0.2 
+libevent-1.4.so.2 
+libevent-1.4.so.2.1.3 
+libevent.a 
+libevent_core-1.4.so.2 
+libevent_core-1.4.so.2.1.3 
+libevent_core.a 
+libevent_core.la 
+libevent_core.so 
+libevent_extra-1.4.so.2 
+libevent_extra-1.4.so.2.1.3 
+libevent_extra.a 
+libevent_extra.la 
+libevent_extra.so 
+libevent.la 
+libevent.so 
+
+版本不同，可能文件列表不同。 
+
+
+
+
+
+
+3、安装memcached，同时需要安装中指定libevent的安装位置 
+复制代码
+ 代码如下:
+
+tar zxvf memcached-1.4.4.tar.gz 
+cd memcached-1.4.4 
+./configure
+make && make install 
+
+安装完成后会把memcached 自动放到 /usr/local/bin/memcached 
+
+4、测试是否成功安装memcached 
+复制代码
+ 代码如下:
+
+ls -al /usr/local/bin/mem* 
+-rwxr-xr-x 1 root root 201869 12-14 21:44 /usr/local/bin/memcached 
+
+5、安装Memcache的PHP扩展 
+
+要关闭memcache
+pkill memcached
+
+接下来是安装php-pecl-memcache
+一个命令就可以。
+yum install php-pecl-memcache
+
+还是需要php扩展，就用下面这个命令
+pecl install memcache
+
+接下来重启apache，用phpinfo()查看，应该可以看到memcache的部分，如果没有的话，检查这里的设置：
+/etc/php.ini加上了 extension=memcache.so
+当然也要确认memcache.so是否存在，是否在/usr/lib/php/modules/下，如果不是，那么找到它，并用完整路径表示。
+
+查看memcache的运行情况，可以用memcache.php来查看。
+
+完成  
+
+
+
+①安装PHP的memcache扩展 
+先找出phpize（至于是干什么的自己搜索）所在位置whereis phpize ，如果没有的话则执行命令yum install php-devel  
+ ,因为PHPize 是属于php 的 devel .
+
+执行phpize
+
+执行完毕后进行编译前的配置
+
+ ./configure --enable-memcache --with-php-config=/usr/bin/php-config --with-zlib-dir
+
+（同样这里需要你找出后面php-config部分所在位置)
+
+make 
+
+make install
+
+然后会提示
+
+安装完后会有类似这样的提示：
+
+Installing shared extensions:     /usr/lib/php/modules/
+
+把这个记住，然后修改php.ini，把
+
+extension_dir = "./"
+
+修改为
+
+extension_dir = "/usr/lib64/php/modules/"
+
+并添加一行
+
+extension=memcache.so
+
+三、memcached的基本设置 
+1.启动Memcache的服务器端： 
+复制代码
+ 代码如下:
+
+memcached -d -m 10 -u root -l 202.207.177.177 -p 11211 -c 256 -P /tmp/memcached.pid 
+
+参数说明： 
+
+-d选项是启动一个守护进程， 
+-m是分配给Memcache使用的内存数量，单位是MB，我这里是10MB， 
+-u是运行Memcache的用户，我这里是root， 
+-l是监听的服务器IP地址，如果有多个地址的话，我这里指定了服务器的IP地址202.207.177.177， 
+-p是设置Memcache监听的端口，我这里设置了11211，最好是1024以上的端口， 
+-c选项是最大运行的并发连接数，默认是1024，我这里设置了256，按照你服务器的负载量来设定， 
+-P是设置保存Memcache的pid文件，我这里是保存在 /tmp/memcached.pid， 
+
+2.如果要结束Memcache进程，执行： 
+
+复制代码
+ 代码如下:
+
+kill `cat /tmp/memcached.pid` 
+
+也可以启动多个守护进程，不过端口不能重复。 
+
+3.检查Memcached是否启动 
+复制代码
+ 代码如下:
+
+netstat -ant 
+tcp 0 0 202.207.177.177:11211 0.0.0.0:* LIST 
+
+11211端口已经打开，说明Memcached已正常启动。 
+
+4.重启CentOS 
+复制代码
+ 代码如下:
+
+reboot 
+
+四、Memcache环境测试 
+运行下面的php文件，如果有输出This is a test!，就表示环境搭建成功。开始你的Memcache的征途吧！ 
+复制代码
+ 代码如下:
+
+<?php 
+$mem = new Memcache; 
+$mem->connect("127.0.0.1", 11211); 
+$mem->set('key', 'This is a test!', 0, 60); 
+$val = $mem->get('key'); 
+echo $val; 
+?>

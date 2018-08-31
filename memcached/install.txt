@@ -1,0 +1,79 @@
+
+After Memcache is downloaded, you can check that it has been installed by searching for it:
+
+ps aux | grep memcache
+
+Install memcached on CentOS 5
+Filed under: Technical Support
+
+Memcached is a distributed, high-performance, in-memory caching system that is primarily used to speed up database-heavy sites, but can be used to stores objects of any kind.
+
+Nearly every popular CMS has a plugin or module to take advantage of it, and many programming languages have a memcached library, including PHP, Perl, Ruby and Python. Memcached runs in-memory and doesn’t need to write to disk, so it is incredibly fast. We’ll discuss setting up memcached for specific CMSes in later articles, but for now let’s get memcached up and running on your CentOS 5 server.
+
+First, we start with installing libevent; at least version 1.1 is required. This one’s easy, we can install it using yum.
+
+yum install libevent libevent-devel
+
+Now, onto memcached. Change your working directory to /usr/local/src and download the memcached source:
+
+cd /usr/local/src
+wget http://memcached.org/files/memcached-1.4.17.tar.gz
+
+Uncompress the tarball you download and change into the directory that is created:
+
+tar xvzf memcached-1.4.17.tar.gz
+cd memcached-1.4.17
+
+Memcached is actively developed, so the version used in this tutorial may be out of date by the time you read this. As of this writing, 1.4.17 is the latest stable version. Check http://danga.com/memcached/download.bml for a newer version before proceeding with the installation.
+
+Up next, configuring our Makefile. This can be as simple as:
+
+./configure
+
+Additional configure flags are available and can improve performance if your server is capable. For 64-bit OSes, you can enable memcached to utilize a larger memory allocation than is possible with 32-bit OSes:
+
+./configure --enable-64bit
+
+If your server has multiple CPUs or uses mutli-core CPUs, enable threading:
+
+./configure --enable-threads
+
+If you’ve got both a 64-bit OS and multiple CPUs, use both:
+
+./configure --enable-threads --enable-64bit
+
+Once the configure script completes, build and install memcached:
+
+make && make install
+
+Last but not least, start a memcached server:
+memcached -d -u nobody -m 512 -p 11211 127.0.0.1
+
+Put another way, the previous command can be laid out like this:
+
+memcached -d -u [user] -m [memory size] -p [port] [listening IP]
+
+Let’s go over what each switch does in the above command:
+
+-d
+    Tell memcached to start up as a backgrounded daemon process
+-u
+    Specify the user that you want to run memcached
+-m
+    Set the memory that you want to be allocated my memcached
+-p
+    The port on which memcached will listen.
+
+And that’s it. Now go forth and speed up your sites!
+
+安装memcached服务
+将 memcached文件放入 /etc/init.d/目录中
+
+$ chmod 755 memcached
+
+Then register the script to start up with the server:
+$ chkconfig --add memcached
+
+Now you can start up memcached as a service.
+$ service memcached start
+
