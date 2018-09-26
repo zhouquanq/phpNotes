@@ -7,7 +7,7 @@ import MySQLdb
 
 database = 'ygo_'+str(serverid);
 
-db = MySQLdb.connect(host="10.10.133.19",user="root", passwd="YMuOR9MI3fQDk6UxjNlT", db=database, port = 3307 , charset='utf8' )
+db = MySQLdb.connect(host="127.0.0.1",user="root", passwd="123456", db=database, port = 3307 , charset='utf8' )
 
 cursor = db.cursor()
 
