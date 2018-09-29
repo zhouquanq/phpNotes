@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+	<include file="__TEMPLATE__/header.html"/>
+	<!-- 主体区域 -->
+	<div id="main">
+		<!-- 左侧区域 -->
+		<div class="left">
+				<div class='hd_title'>
+					<strong>置顶推荐</strong>	
+				</div>	
+				<ul class='zhiding'>
+					<arclist rows="2" attr="置顶,推荐">
+						<li>
+							<div class='image'>
+								<a href="{$field.url}">
+									<img src="{$field.thumb}" alt="缩略图占位"/>
+								</a>
+							</div>
+							<h2><a href="{$field.url}">{$field.title}</a></h2>
+							<p>{$field.digest}</p>
+						</li>
+					</arclist>
+				</ul>	
+				<div class='hd_title'>
+					<strong>最近文章</strong>	
+				</div>	
+
+			<ul class="arc_list">
+				<arclist>
+					<li>
+						<div class="pic"><a href=""><img width="150" height="100" src="{$field.thumb}" alt="缩略图" /></a></div>
+						<h3><a href="">{$field.title}</a></h3>
+						<span class="date">{$field.sendtime|date:'m-d',@@}</span>
+						<a href="" class="comment">{$field.total}条评论</a>
+						<span class="browse_number">{$field.click}次浏览</span>
+						<p class="description">{$field.digest}</p>
+					</li>
+				</arclist>
+			</ul>
+		</div>
+		<!-- 左侧区域结束 -->
+		<!-- 右侧区域 -->
+		<div class="right">
+			<div class='hd_title'>
+				<strong>标签云</strong>	
+			</div>
+			<div id="tagBox" class='tags'>
+				<tag>
+					<a href="{$field.url}">{$field.tagname}</a>	
+				</tag>
+			</div>
+			<div class='hd_title'>
+				<strong>热门文章</strong>	
+			</div>
+			<ul class='arc_list'>
+				<arclist rows="2" attr="热门">
+					<li>
+						<div class='image'>
+							<a href="">
+								<img src="{$field.thumb}" alt=""/>
+							</a>
+						</div>
+						<h2><a href="">{$field.title}...</a></h2>
+						<p>
+							<em>{$field.sendtime|date:'m-d',@@}</em><span>{$field.total}条评论</span>
+						</p>
+					</li>
+				</arclist>
+			</ul>
+			<div class='hd_title'>
+				<strong>推荐文章</strong>	
+			</div>
+			
+			<ul class='arc_list'>
+				
+				<li>
+						<div class='image'>
+							<a href="">
+								<img src="" alt=""/>
+							</a>
+						</div>
+						<h2><a href="">标题...</a></h2>
+						<p>
+							<em>2013-1-1</em><span>20条评论</span>
+						</p>
+					</li>
+					<li>
+						<div class='image'>
+							<a href="">
+								<img src="" alt=""/>
+							</a>
+						</div>
+						<h2><a href="">标题...</a></h2>
+						<p>
+							<em>2013-1-1</em><span>20条评论</span>
+						</p>
+					</li>
+			
+			</ul>
+		</div>
+		<!-- 右侧区域结束 -->
+	</div>
+	<!-- 主体区域结束 -->
+	<!-- 底部浅灰色导航区域 -->
+	<div id="bottom_menu_box" style="margin-top:30px;">
+		<div class="bottom_menu">
+			<dl>
+				<dt><a href="">百度</a></dt>
+			</dl>
+			<dl>
+				<dt><a href="">百度</a></dt>
+			</dl>
+		</div>
+	</div>
+	<!-- 底部浅灰色导航区域结束 -->
+
+	<!-- 底部版权区域 -->
+	<div id="bottom_copyright_box">
+		<div class="bottom_copyright">
+			版权信息
+		</div>
+	</div>
+	<!-- 底部版权区域结束 -->
+	
+</body>
+</html>
+

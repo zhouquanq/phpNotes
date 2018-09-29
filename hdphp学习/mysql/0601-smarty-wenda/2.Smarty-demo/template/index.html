@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!--载入公共头部-->
+		{hd include file="./header.html"}
+		<!--我是注释-->
+		{hd *$houdun*}
+		<hr />
+		{hd $houdun}
+		<hr />
+		{hd $data.title} - {hd $data.time} - {hd $data.info.url}
+		<hr />
+		<!--获得get参数写法-->
+		{hd $smarty.get.id}
+		<hr />
+		<!--调用常量-->
+		{hd $smarty.const.ROOT_PATH}
+		<hr />
+		<!--获得当前时间戳-->
+		{hd $smarty.now}
+		<hr />
+		<!--格式化当前时间戳-->
+		{hd $smarty.now|date_format:'%y-%m-%d %H:%M:%S'}
+		<hr />
+		<!--设置默认值-->
+		<script type="text/javascript">
+		//如果session里面的uid不存在则默认值为0
+			var uid = {hd $smarty.session.uid|default:0};
+			if(!uid){
+				alert('请登录');
+			}
+		</script>
+		<hr />
+		<!--变量调节器可以多个一起使用-->
+		{hd $letter|upper|lower|upper}
+		<hr />
+		<!--截取字符串(截取汉字bug,非常不方便)-->
+		{hd $title|truncate:7:'-'}
+		<hr />
+		<!--包裹的部分，不做smarty解析-->
+		{hd literal}
+			{hd $title|truncate:7:'-'}
+		{hd /literal}
+		<hr />
+		<!--if使用-->
+		{hd if $data.title=='今天消防演习了'}
+			是的
+		{hd else}
+			不是
+		{hd /if}
+		<hr />
+		<!--foreach循环-->
+		<table border="1" cellspacing="" cellpadding="">
+			<tr>
+				<th>aid</th>
+				<th>标题</th>
+			</tr>
+			{hd foreach from=$arcData key=k item=v}
+			<tr>
+				<td>{hd $v.aid}</td>
+				<td>{hd $v.title}</td>
+			</tr>
+			{hd /foreach}
+		</table>
+		<hr />
+		<!--section循环-->
+		<table border="1" cellspacing="" cellpadding="">
+			<tr>
+				<th>aid</th>
+				<th>标题</th>
+			</tr>
+			{hd section loop=$arcData name=x}
+			<tr>
+				<td>{hd $arcData[x].aid}</td>
+				<td>{hd $arcData[x].title}</td>
+			</tr>
+			{hd /section}
+		</table>
+		<hr />
+		<table border="1" cellspacing="" cellpadding="">
+			<tr>
+				<th>aid</th>
+				<th>标题</th>
+			</tr>
+			<!--
+			loop 要循环的数组
+			name 下标
+			start 从哪里开始，默认从0开始
+			max 取多少条
+			step 跳多少条
+			-->
+			{hd section loop=$arcData name=x start=1 max=10 step=2}
+			<tr>
+				<td>{hd $arcData[x].aid}</td>
+				<td>{hd $arcData[x].title}</td>
+			</tr>
+			{hd /section}
+		</table>
+		<hr />
+		<table border="1" cellspacing="" cellpadding="">
+			<tr>
+				<th>aid</th>
+				<th>标题</th>
+			</tr>
+			<!--
+			把第一条记录描红
+			-->
+			{hd section loop=$arcData name=x}
+				<!--如果是第一条记录-->
+				{hd if $smarty.section.x.first}
+					<tr style="color: red;">
+						<td>{hd $arcData[x].aid}</td>
+						<td>{hd $arcData[x].title}</td>
+					</tr>
+				{hd else}
+					<tr>
+						<td>{hd $arcData[x].aid}</td>
+						<td>{hd $arcData[x].title}</td>
+					</tr>
+				{hd /if}
+			{hd /section}
+		</table>
+		<hr />
+		<table border="1" cellspacing="" cellpadding="">
+			<tr>
+				<th>aid</th>
+				<th>标题</th>
+			</tr>
+			<!--
+			把前3条记录描红
+			-->
+			{hd section loop=$arcData name=x}
+				{hd if $smarty.section.x.index<3}
+					<tr style="color: red;">
+						<td>{hd $arcData[x].aid}</td>
+						<td>{hd $arcData[x].title}</td>
+					</tr>
+				{hd else}
+					<tr>
+						<td>{hd $arcData[x].aid}</td>
+						<td>{hd $arcData[x].title}</td>
+					</tr>
+				{hd /if}
+			{hd /section}
+		</table>
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

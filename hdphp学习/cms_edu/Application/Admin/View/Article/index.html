@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>文章管理</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/hdjs/hdjs.css"/>
+    <style type="text/css">
+    	.page_cms{
+    		margin-top: 20px;
+    		text-align: center;
+    	}
+    	.page_cms a{
+    		padding: 5px;
+    		border: 1px solid #ccc;
+    		margin-left: 3px;
+    	}
+    	.page_cms strong{
+    		padding: 5px;
+    		border: 1px solid #ccc;
+    		margin-left: 3px;
+    		background: red;
+    		color: #fff;
+    	}
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <table class="hd-table hd-table-list">
+        <thead>
+        <tr>
+            <td width="50">id</td>
+            <td>文章标题</td>
+            <td width="100">属性</td>
+            <td width="180">添加时间</td>
+            <td width="180">修改时间</td>
+            <td width="100">所属分类</td>
+            <td width="50">作者</td>
+            <td width="150">操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        	<foreach from="$data" key="$k" value="$v">
+            <tr>
+	            <td width="50">{$v.aid}</td>
+	            <td>{$v.title}</td>
+	            <td width="100">{$v.attr}</td>
+	            <td width="180">{$v.sendtime|date:'Y-m-d H:i:s',@@}</td>
+	            <td width="180">{$v.updatetime}</td>
+	            <td width="100">{$v.cname}</td>
+	            <td width="50">{$v.author}</td>
+	            <td width="150">
+					<a href="{|U:'edit',array('aid'=>$v['aid'])}">编辑</a>
+					<a href="">删除</a>
+	            </td>
+        	</tr>
+        	</foreach>
+        </tbody>
+    </table>
+    <div class="page_cms">
+      {$page}
+    </div>
+</div>
+
+</body>
+</html>
+
+

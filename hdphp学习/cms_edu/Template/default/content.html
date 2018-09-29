@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title></title>
+<link rel="stylesheet" href="__TEMPLATE__/css/page.css" />
+	<include file="__TEMPLATE__/header.html"/>
+	<!-- 主体区域 -->
+	<div id="page_main">
+		<!-- 右侧区域 -->
+<div class="right">
+			<div class='hd_title'>
+				<strong>标签云</strong>	
+			</div>
+			<div id="tagBox" class='tags'>
+				<tag tid="1">
+				<a href="">php</a>	
+				<a href="">js</a>				
+				</tag>
+			</div>
+			<div class='hd_title'>
+				<strong>热门文章</strong>	
+			</div>
+			<ul class='arc_list'>
+					<li>
+						<div class='image'>
+							<a href="">
+								<img src="" alt=""/>
+							</a>
+						</div>
+						<h2><a href="">标题...</a></h2>
+						<p>
+							<em>2011-1-1</em><span>20条评论</span>
+						</p>
+					</li>
+					<li>
+						<div class='image'>
+							<a href="">
+								<img src="" alt=""/>
+							</a>
+						</div>
+						<h2><a href="">标题...</a></h2>
+						<p>
+							<em>2011-1-1</em><span>20条评论</span>
+						</p>
+					</li>
+				
+			</ul>
+			<div class='hd_title'>
+				<strong>推荐文章</strong>	
+			</div>
+			
+			<ul class='arc_list'>
+				
+				<li>
+						<div class='image'>
+							<a href="">
+								<img src="" alt=""/>
+							</a>
+						</div>
+						<h2><a href="">标题...</a></h2>
+						<p>
+							<em>2011-1-1</em><span>20条评论</span>
+						</p>
+					</li>
+					<li>
+						<div class='image'>
+							<a href="">
+								<img src="" alt=""/>
+							</a>
+						</div>
+						<h2><a href="">标题...</a></h2>
+						<p>
+							<em>2011-1-1</em><span>20条评论</span>
+						</p>
+					</li>
+			
+			</ul>
+		</div>
+		<!-- 右侧区域结束 -->
+		<!-- 左侧 -->
+		<div class="left">
+			<h1><a href="">{$c49cms.title}</a></h1>
+			<!-- 文章信息 -->
+			<div class="article_info_box">
+				<p class="article_info">
+					<span class="padding_right">{$c49cms.sendtime|date:'Y-m-d H:i:s',@@}</span>
+					分类：<a href="" class="padding_right">{$c49cms.cname}</a>
+					<a href="" class="padding_right comment">{$c49cms.total}条评论</a>
+					<span id="click">{$c49cms.click}</span>次浏览
+				</p>
+			</div>
+			<!-- 文章信息结束 -->
+
+			<!-- 文章内容区域 -->
+			<div class="article_content">
+				{$c49cms.content}
+			</div>
+			<!-- 文章内容区域结束 -->
+			<p class="position">当前位置：<a href="">{$c49cms.cname}</a> » <a href="">{$c49cms.title}</a></p>
+			<p class="tags">
+				继续浏览有关
+				<!-- //标签 -->
+				<a href="">PHP</a><a href="">JS</a>
+				的文章</p>
+			<!-- 相关文章 -->
+			<ul id="msg_list" class="msg_list">
+				<p id="loading">
+					<img src="./images/loading.gif" style='width:50px;height:50px;'>
+				</p>
+				<div>
+					评论：
+					<ul class="comment-ul">
+						
+					</ul>
+				</div>
+			</ul>
+			<div id="comment-form-box">
+				<form id="commentForm" action="" method="post">	
+					<textarea id="comment_content" name="comcon"></textarea>
+					<input class='submit' type="submit" value="发表评论">
+				</form>
+			</div>	
+	<!-- 主体区域结束 -->
+	<!-- 底部浅灰色导航区域 -->
+	<div id="bottom_menu_box" style="margin-top:30px;">
+		<div class="bottom_menu">
+			<dl>
+				<dt><a href="">百度</a></dt>
+			</dl>
+			<dl>
+				<dt><a href="">百度</a></dt>
+			</dl>
+		</div>
+	</div>
+	<!-- 底部浅灰色导航区域结束 -->
+
+	<!-- 底部版权区域 -->
+	<div id="bottom_copyright_box">
+		<div class="bottom_copyright">
+			版权信息
+		</div>
+	</div>
+	<!-- 底部版权区域结束 -->
+	
+</body>
+</html>

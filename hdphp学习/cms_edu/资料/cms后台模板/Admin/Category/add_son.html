@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>分类管理</title>
+    <hdjs/>
+    <bootstrap/>
+    <css file="./css/css.css"/>
+</head>
+<body>
+<div class="wrap">
+    <div class="title-header">添加子分类</div>
+    <form action="" method="post" class="form-inline hd-form">
+        <table class="table1">
+            <tr>
+                <th class="w100">分类名称</th>
+                <td  class="w100">
+                    <input type="text" name="cname" class="w200"/> 
+                </td>
+                <td>分类名称长度 1 到 20 位</td>
+            </tr>
+            <tr>
+                <th class="w100">所属分类</th>
+                <td>
+                   新闻
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="w100">分类标题</th>
+                <td>
+                    <input type="text" name="title" class="w200"/>
+                </td>
+                <td> 分类标题长度 1 到 60 位 </td>
+            </tr>
+            <tr>
+                <th class="w100">分类关键字</th>
+                <td>
+                    <textarea name="keywords" id="" class="form-control" rows="5"></textarea>
+                </td>
+                <td>分类关键字长度 1 到 255位</td>
+            </tr>
+            <tr>
+                <th class="w100">分类描述</th>
+                <td>
+                    <textarea name="description" id="" class="form-control" rows="5"></textarea>
+                </td>
+                <td>分类描述长度 1 到 255位  </td>
+            </tr>
+            <tr>
+                <th class="w100">分类排序</th>
+                <td>
+                    <input type="text" name="sort" class="w200" value="100"/>
+                </td>
+                <td>请填写1到65535的排序数字 </td>
+            </tr>
+            <tr>
+                <th class="w100">静态目录</th>
+                <td>
+                    <input type="text" name="htmldir" class="w200"/>
+                </td>
+                <td>请填写1~20位只包含字母数字下划线,分类静态目录 例如：php</td>
+            </tr>
+             <tr>
+                <th class="w100">列表页是否静态</th>
+                <td>
+                    是：<input type="radio" name="islisthtml" id="" value="1"/>
+                    &nbsp;
+                    否: <input type="radio" name="islisthtml" id="" checked="checked" value="0"/>
+                </td>
+                <td></td>
+            </tr>
+             <tr>
+                <th class="w100">内容页是否静态</th>
+                <td>
+                    是：<input type="radio" name="isarchtml" id="" value="1"/>
+                    &nbsp;
+                    否: <input type="radio" name="isarchtml" id="" checked="checked" value="0"/>
+                </td>
+                <td></td>
+            </tr>
+             <tr>
+                <th class="w100">是否显示</th>
+                <td>
+                    是：<input type="radio" name="isshow" id="" checked="checked" value="1"/>
+                    &nbsp;
+                    否: <input type="radio" name="isshow" id=""  value="0"/>
+                </td>
+                <td></td>
+            </tr>       
+        </table>
+        <div class="position-bottom">
+            <input type="submit" class="hd-success" value="添加"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>

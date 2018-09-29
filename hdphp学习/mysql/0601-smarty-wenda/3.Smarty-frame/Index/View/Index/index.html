@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		首页
+		<table border="1" cellspacing="" cellpadding="">
+			<tr>
+				<th>aid</th>
+				<th>标题</th>
+			</tr>
+			{hd foreach from=$data item=v}
+				<tr>
+					<td>{hd $v.aid}</td>
+					<td>{hd $v.title}</td>
+				</tr>
+			{hd /foreach}
+		</table>
+		
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

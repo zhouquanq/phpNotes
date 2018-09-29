@@ -1,0 +1,139 @@
+<link rel="stylesheet" href="__TEMPLATE__/css/style.css" />
+<script type="text/javascript" src="__TEMPLATE__/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__TEMPLATE__/js/js.js"></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/hdjs/hdjs.css"/>
+<script src="__STATIC__/hdjs/hdjs.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function(){
+		var URL = "{|U:'Common/checkUser'}";
+		$('#regForm').validate({
+			username_reg : {
+				rule : {
+					required : true,
+					minlen:5,
+					ajax:{url:URL}
+				},
+				error :{
+					required : '用户名不能为空',
+					minlen:'用户名不得少于5位'
+				},
+				success:'ok',
+				message:'请填写用户名'
+			},
+			nickname: {
+				rule : {
+					required : true,
+					
+				},
+				error :{
+					required : '昵称不能为空',
+					
+				},
+				success:'ok',
+				message:'请填写昵称'
+			},
+			password_reg1: {
+				rule : {
+					required : true,
+					minlen:6
+				},
+				error :{
+					required : '密码不能为空',
+					minlen:'密码不得少于6位'
+					
+				},
+				success:'ok',
+				message:'请填写密码'
+			},
+			password_reg2: {
+				rule : {
+					required : true,
+					minlen:6,
+					confirm: 'password_reg1'
+				},
+				error :{
+					required : '确认密码不能为空',
+					minlen:'确认密码不得少于6位',
+					confirm :'两次密码不相同'
+				},
+				success:'ok',
+				message:'请填写确认密码'
+			}
+		})
+	})
+</script>
+</head>
+<body>
+	<!-- 顶部100%灰色区域 -->
+	<div id="top_dark_box">
+		<!-- 中间1200px宽度区域 -->
+		<div id="top_dark">
+			<a href=""><img src="__TEMPLATE__/images/others/logo.jpg" id="logo" /></a>
+			<!-- 导航菜单 -->
+			<ul id="menu">
+				<li>
+					<a href="__ROOT__">首页</a>
+				</li>
+				<navigate>
+					<li>
+						<a href="{$field.url}">{$field.cname}</a>
+					</li>
+				</navigate>
+			</ul>
+			<!-- 导航菜单结束 -->
+			<!-- 用户登录 -->
+			<div id="loginInfo" class='loginInfo'>
+				<a href="javascript:showLoginBox()" class="top_login">用户登录</a>
+			<a href="javascript:showRegBox();">注册</a>
+			<!-- <span>小明</span><a href="">退出</a> -->
+			</div>
+			<!-- 用户登录对应隐藏区域 -->
+			<form id="loginForm" action="" method="post">
+			<div class="login_hide_box">
+				<img src="__TEMPLATE__/images/sanjiao.gif" alt="" />
+				<div class="middle">
+					<p>用户名：</p>
+					<input type="text" name="username" class="text" />
+					<p>密码：</p>
+					<input type="password" name="password" class="text" />
+					<input type="submit" value="" class="sub" />
+				</div>
+				<div class="bottom">
+					<a  href="javascript:showRegBox();" class="reg">注册</a>
+				</div>
+			</div>
+			</form>
+			
+			<!-- 用户注册对应隐藏区域 -->
+			<form id="regForm" action="" method="post">	
+			<div class="reg_hide_box">
+				<img src="__TEMPLATE__/images/sanjiao.gif" alt="" />
+				<div class="middle">
+					<p>用户名：<span id="hd_username_reg"></span></p>
+					<input type="text" name="username_reg" class="text username" />
+					<p>昵称：</p>
+					<input type="text" name="nickname" class="text nickname" />
+					<p>密码：</p>
+					<input type="password" name="password_reg1" class="text password" />
+					<p>确认密码：</p>
+					<input type="password" name="password_reg2" class="text password" />
+					<p>验证码：</p>
+					<img src="" id="code" onclick="this.src=this.src + '&' + Math.random()"/>
+					<input type="text"  name="code" class="text password_d" />
+					<input type="submit" value="注册" class="sub" />
+				</div>
+			</div>
+			</form>
+		</div>
+		<!-- 中间1200px宽度区域结束 -->
+	</div>
+	<!-- 顶部灰色100%区域结束 -->
+	
+	<!-- 顶部最新消息区域 -->
+	<div id="latest_news_box">
+		<div id="latest_news">
+			<p><span class="title">最新消息：</span>
+				<a href=""><arclist rows="1">{$field.title}</arclist></a></p>
+		</div>
+	</div>
+	<!-- 顶部最新消息区域结束 -->

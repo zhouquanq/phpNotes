@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.top {
+  width: 980px;
+  margin: 0 auto;
+  border: 1px solid red;
+  overflow: hidden;
+}
+.top ul li {
+  float: left;
+  margin-left: 10px;
+}
+.top ul li a {
+  font-size: 20px;
+}
+.top ul li a:hover {
+  color: green;
+}
+.hot li {
+  border: 1px solid blue;
+}
+.hot li .title {
+  color: gold;
+}
+.hot li .des {
+  color: grey;
+}
+.hot li p {
+  color: grey;
+  height: 50px;
+}
+.high li {
+  border: 1px solid blue;
+}
+.high li .title {
+  color: gold;
+}
+.high li .des {
+  color: red;
+}
+.high li p {
+  color: red;
+  height: 50px;
+}
+/*# sourceMappingURL=index.css.map */

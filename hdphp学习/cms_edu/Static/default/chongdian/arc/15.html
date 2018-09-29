@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title></title>
+<link rel="stylesheet" href="http://127.0.0.1/c49/cms_edu/Template/default/css/page.css" />
+	<link rel="stylesheet" href="http://127.0.0.1/c49/cms_edu/Template/default/css/style.css" />
+<script type="text/javascript" src="http://127.0.0.1/c49/cms_edu/Template/default/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/c49/cms_edu/Template/default/js/js.js"></script>
+<link rel="stylesheet" type="text/css" href="http://127.0.0.1/c49/cms_edu/Static/hdjs/hdjs.css"/>
+<script src="http://127.0.0.1/c49/cms_edu/Static/hdjs/hdjs.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function(){
+		var URL = "http://127.0.0.1/c49/cms_edu/index.php/Index/Common/checkUser";
+		$('#regForm').validate({
+			username_reg : {
+				rule : {
+					required : true,
+					minlen:5,
+					ajax:{url:URL}
+				},
+				error :{
+					required : '用户名不能为空',
+					minlen:'用户名不得少于5位'
+				},
+				success:'ok',
+				message:'请填写用户名'
+			},
+			nickname: {
+				rule : {
+					required : true,
+					
+				},
+				error :{
+					required : '昵称不能为空',
+					
+				},
+				success:'ok',
+				message:'请填写昵称'
+			},
+			password_reg1: {
+				rule : {
+					required : true,
+					minlen:6
+				},
+				error :{
+					required : '密码不能为空',
+					minlen:'密码不得少于6位'
+					
+				},
+				success:'ok',
+				message:'请填写密码'
+			},
+			password_reg2: {
+				rule : {
+					required : true,
+					minlen:6,
+					confirm: 'password_reg1'
+				},
+				error :{
+					required : '确认密码不能为空',
+					minlen:'确认密码不得少于6位',
+					confirm :'两次密码不相同'
+				},
+				success:'ok',
+				message:'请填写确认密码'
+			}
+		})
+	})
+</script>
+</head>
+<body>
+	<!-- 顶部100%灰色区域 -->
+	<div id="top_dark_box">
+		<!-- 中间1200px宽度区域 -->
+		<div id="top_dark">
+			<a href=""><img src="http://127.0.0.1/c49/cms_edu/Template/default/images/others/logo.jpg" id="logo" /></a>
+			<!-- 导航菜单 -->
+			<ul id="menu">
+				<li>
+					<a href="http://127.0.0.1/c49/cms_edu">首页</a>
+				</li>
+				
+					<li>
+						<a href="http://127.0.0.1/c49/cms_edu/Static/default/dianqi/index.html">电器</a>
+					</li>
+				
+
+					<li>
+						<a href="http://127.0.0.1/c49/cms_edu/index.php/Index/List/index/cid/6">衣服</a>
+					</li>
+				
+
+					<li>
+						<a href="http://127.0.0.1/c49/cms_edu/Static/default/yule/index.html">娱乐</a>
+					</li>
+				
+			</ul>
+			<!-- 导航菜单结束 -->
+			<!-- 用户登录 -->
+			<div id="loginInfo" class='loginInfo'>
+				<a href="javascript:showLoginBox()" class="top_login">用户登录</a>
+			<a href="javascript:showRegBox();">注册</a>
+			<!-- <span>小明</span><a href="">退出</a> -->
+			</div>
+			<!-- 用户登录对应隐藏区域 -->
+			<form id="loginForm" action="" method="post">
+			<div class="login_hide_box">
+				<img src="http://127.0.0.1/c49/cms_edu/Template/default/images/sanjiao.gif" alt="" />
+				<div class="middle">
+					<p>用户名：</p>
+					<input type="text" name="username" class="text" />
+					<p>密码：</p>
+					<input type="password" name="password" class="text" />
+					<input type="submit" value="" class="sub" />
+				</div>
+				<div class="bottom">
+					<a  href="javascript:showRegBox();" class="reg">注册</a>
+				</div>
+			</div>
+			</form>
+			
+			<!-- 用户注册对应隐藏区域 -->
+			<form id="regForm" action="" method="post">	
+			<div class="reg_hide_box">
+				<img src="http://127.0.0.1/c49/cms_edu/Template/default/images/sanjiao.gif" alt="" />
+				<div class="middle">
+					<p>用户名：<span id="hd_username_reg"></span></p>
+					<input type="text" name="username_reg" class="text username" />
+					<p>昵称：</p>
+					<input type="text" name="nickname" class="text nickname" />
+					<p>密码：</p>
+					<input type="password" name="password_reg1" class="text password" />
+					<p>确认密码：</p>
+					<input type="password" name="password_reg2" class="text password" />
+					<p>验证码：</p>
+					<img src="" id="code" onclick="this.src=this.src + '&' + Math.random()"/>
+					<input type="text"  name="code" class="text password_d" />
+					<input type="submit" value="注册" class="sub" />
+				</div>
+			</div>
+			</form>
+		</div>
+		<!-- 中间1200px宽度区域结束 -->
+	</div>
+	<!-- 顶部灰色100%区域结束 -->
+	
+	<!-- 顶部最新消息区域 -->
+	<div id="latest_news_box">
+		<div id="latest_news">
+			<p><span class="title">最新消息：</span>
+				<a href="">衣服的文章</a></p>
+		</div>
+	</div>
+	<!-- 顶部最新消息区域结束 -->
+	<!-- 主体区域 -->
+	<div id="page_main">
+		<!-- 右侧区域 -->
+<div class="right">
+			<div class='hd_title'>
+				<strong>标签云</strong>	
+			</div>
+			<div id="tagBox" class='tags'>
+				
+				<a href="">php</a>	
+				<a href="">js</a>				
+				
+
+				<a href="">php</a>	
+				<a href="">js</a>				
+				
+
+				<a href="">php</a>	
+				<a href="">js</a>				
+				
+			</div>
+			<div class='hd_title'>
+				<strong>热门文章</strong>	
+			</div>
+			<ul class='arc_list'>
+					<li>
+						<div class='image'>
+							<a href="">
+								<img src="" alt=""/>
+							</a>
+						</div>
+						<h2><a href="">标题...</a></h2>
+						<p>
+							<em>2011-1-1</em><span>20条评论</span>
+						</p>
+					</li>
+					<li>
+						<div class='image'>
+							<a href="">
+								<img src="" alt=""/>
+							</a>
+						</div>
+						<h2><a href="">标题...</a></h2>
+						<p>
+							<em>2011-1-1</em><span>20条评论</span>
+						</p>
+					</li>
+				
+			</ul>
+			<div class='hd_title'>
+				<strong>推荐文章</strong>	
+			</div>
+			
+			<ul class='arc_list'>
+				
+				<li>
+						<div class='image'>
+							<a href="">
+								<img src="" alt=""/>
+							</a>
+						</div>
+						<h2><a href="">标题...</a></h2>
+						<p>
+							<em>2011-1-1</em><span>20条评论</span>
+						</p>
+					</li>
+					<li>
+						<div class='image'>
+							<a href="">
+								<img src="" alt=""/>
+							</a>
+						</div>
+						<h2><a href="">标题...</a></h2>
+						<p>
+							<em>2011-1-1</em><span>20条评论</span>
+						</p>
+					</li>
+			
+			</ul>
+		</div>
+		<!-- 右侧区域结束 -->
+		<!-- 左侧 -->
+		<div class="left">
+			<h1><a href="">易迅网招聘资深前端开发工程师（上海）</a></h1>
+			<!-- 文章信息 -->
+			<div class="article_info_box">
+				<p class="article_info">
+					<span class="padding_right">2015-06-09 09:51:41</span>
+					分类：<a href="" class="padding_right">充电手电</a>
+					<a href="" class="padding_right comment">1条评论</a>
+					<span id="click">0</span>次浏览
+				</p>
+			</div>
+			<!-- 文章信息结束 -->
+
+			<!-- 文章内容区域 -->
+			<div class="article_content">
+				<p>上海易迅电子商务发展有限公司旗下易迅网于2006年创建，公司总部坐落于上海。是华东地区最大的B2C购物网站。 
+公司由创业初期发展至今已经拥有员工近7000人。物流仓储面积超过10w平方米，物流管理全程信息化，自建高效配送体系及3PL深度合作实现。2010
+年全国首创“一日三送”的精准配送服务。 
+公司主营业务以4C产品网络零售业务为主，包括销售电脑产品、手机数码、家电家居、汽车用品、服饰、鞋帽等逾1000种品牌，超过六万种单品。以“超越客
+户预期”为目标，致力于为用户提供丰富的商品选择、便捷的购物方式和完善的售后服务，打造更好的E时代购物体验。</p><h2>职位描述</h2><ul class=" list-paddingleft-2"><li><p>负责易迅网站前端页面研发</p></li><li><p>根据产品需求，制订最优的前端解决方案</p></li><li><p>维护UI组件及类库</p></li><li><p>优化网站前端的性能问题</p></li></ul><h2>任职要求</h2><ul class=" list-paddingleft-2"><li><p>3年以上前端开发经验，有丰富的实践经验，对前端开发感兴趣，关注前端技术发展</p></li><li><p>熟悉浏览器的工作原理，熟悉<a title="携程网国际业务部招靠谱前端(HTML+CSS+JS)(上海总部)" href="http://www.daqianduan.com/5599.html" target="_blank">HTML</a>、CSS、<a title="北京网易电商招聘JavaScript工程师" href="http://www.daqianduan.com/4916.html" target="_blank">JavaScript</a>等前端开发技术，能熟练编写扩展性、兼容性、可读性良好的代码</p></li><li><p>熟悉流行的前端框架，了解前端的<a title="新华网招中高级Web前端开发工程师（北京 8-20K）" href="http://www.daqianduan.com/5641.html" target="_blank">MVC</a>、<a title="丁香园求多枚Web前端工程师(杭州滨江 8-15K)" href="http://www.daqianduan.com/5677.html" target="_blank">模块化</a>开发，至少精通一种Javascript类库</p></li><li><p>熟悉grunt、DevTools等前端工具链</p></li><li><p>有良好的沟通协调能力，有团队协作精神</p></li><li><p>有良好的技术视野和规划能力，能独立完成复杂前端模块的设计与实现，具备快速的学习能力</p></li><li><p>有移动端H5页面开发经验优先</p></li></ul><h2>公司官网</h2><p>易迅网：<a href="http://www.yixun.com" target="_blank">http://www.yixun.com</a></p><p><strong>招聘联系：</strong>sunfan@yixun.com</p><p><br/></p>			</div>
+			<!-- 文章内容区域结束 -->
+			<p class="position">当前位置：<a href="">充电手电</a> » <a href="">易迅网招聘资深前端开发工程师（上海）</a></p>
+			<p class="tags">
+				继续浏览有关
+				<!-- //标签 -->
+				<a href="">PHP</a><a href="">JS</a>
+				的文章</p>
+			<!-- 相关文章 -->
+			<ul id="msg_list" class="msg_list">
+				<p id="loading">
+					<img src="./images/loading.gif" style='width:50px;height:50px;'>
+				</p>
+				<div>
+					评论：
+					<ul class="comment-ul">
+						
+					</ul>
+				</div>
+			</ul>
+			<div id="comment-form-box">
+				<form id="commentForm" action="" method="post">	
+					<textarea id="comment_content" name="comcon"></textarea>
+					<input class='submit' type="submit" value="发表评论">
+				</form>
+			</div>	
+	<!-- 主体区域结束 -->
+	<!-- 底部浅灰色导航区域 -->
+	<div id="bottom_menu_box" style="margin-top:30px;">
+		<div class="bottom_menu">
+			<dl>
+				<dt><a href="">百度</a></dt>
+			</dl>
+			<dl>
+				<dt><a href="">百度</a></dt>
+			</dl>
+		</div>
+	</div>
+	<!-- 底部浅灰色导航区域结束 -->
+
+	<!-- 底部版权区域 -->
+	<div id="bottom_copyright_box">
+		<div class="bottom_copyright">
+			版权信息
+		</div>
+	</div>
+	<!-- 底部版权区域结束 -->
+	
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>添加文章</title>
+    <hdjs/>
+    <bootstrap/>
+    <css file="__CONTROL_TPL__/css/css.css"/>
+    <style type="text/css">
+        .checkbox{
+             margin-left:5px;
+             width:90px;
+             margin-top: 10px;
+        }
+        textarea{
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="title-header">添加文章</div>
+    <form action="" method="post" class="form-inline hd-form">
+        <table class="table1">
+            <tr>
+                <th class="w100">文章标题</th>
+                <td class="w100">
+                    <input type="text" name="title" class="w200"/> 
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="w100">作者</th>
+                <td>
+                    <input type="text" name="author" class="w200" value="admin"/>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="w100">所属分类</th>
+                <td>
+                    <select name="category_cid" class="w200">
+                        <option value="0">请选择分类</option>
+                    </select>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="w100">文章摘要</th>
+                <td>
+                    
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="w100">缩略图</th>
+                <td>
+                     
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="w100">文章属性</th>
+                <td>
+                    <label class="checkbox-inline">
+                        热门
+                        <input type="checkbox" value="热门" name="attr[]" class="check_input">
+                    </label>
+                    <label class="checkbox-inline">
+                        置顶
+                        <input type="checkbox" value="置顶" name="attr[]" class="check_input">
+                    </label>
+                    <label class="checkbox-inline">
+                        推荐
+                        <input type="checkbox" value="推荐" name="attr[]" class="check_input">
+                    </label>
+                    <label class="checkbox-inline">
+                        图文
+                        <input type="checkbox" value="图文" name="attr[]" class="check_input">
+                    </label>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="w100">文章标签</th>
+                <td>
+                    
+                </td>
+                <td></td>
+            </tr>
+             <tr>
+                <th class="w100">文章关键字</th>
+                <td>
+                    <textarea name="keywords" id="" rows="10"></textarea>
+                </td>
+                <td></td>
+            </tr>
+             <tr>
+                <th class="w100">文章描述</th>
+                <td>
+                    <textarea name="description" id="" cols="30" rows="10"></textarea>
+                </td>
+                <td></td>
+            </tr>
+             <tr>
+                <th class="w100">文章正文</th>
+                <td>
+                    
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="w100"></th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="w100"></th>
+                <td></td>
+                <td></td>
+            </tr>
+        
+        </table>
+        <div class="position-bottom">
+            <input type="submit" class="hd-success" value="添加"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//失去焦点
+				$('input[name=food]').blur(function(){
+					//获得表单中的内容
+					var food = $(this).val();
+					//发异步
+					$.ajax({
+						//1.杨铭宇黄焖🐔(请求地址)
+						url:"./huangmenji.php",
+						//2.订餐方式 电话或者网站订餐(请求方式：post,get)
+						type:"post",
+						//3.说你要吃什么(发送数据)
+						data:{f:food},
+						//4.得到饭店回复(得到服务器响应)
+						success:function(phpData){
+							if(phpData == '0'){
+								$('.msg').html("抱歉，我们只卖黄焖🐔，而且还送🍎哦！");
+							}else{
+								$('.msg').html("好叻，您稍等！");
+							}
+							
+							
+						}
+					});
+					
+				})
+			})
+		</script>
+		<style type="text/css">
+			.msg{
+				background: #EBCCCC;
+				padding: 10px;
+				border: 1px solid #fff;
+				
+			}
+		</style>
+	</head>
+	<body>
+		外卖：<input type="text" name="food" id="" />
+		<br />
+		<div class="msg"></div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.top{
+    width: 980px;
+    margin: 0 auto;
+    border: 1px solid red;
+    overflow: hidden;
+    ul{
+        li{
+            float: left;
+            margin-left: 10px;
+            a{
+                font-size: 20px;
+                &:hover{
+                    color: green;
+                }
+            }
+        }
+    }
+}
+//样式公用，并且可以传参
+.li-yellow(@color:red){
+        border: 1px solid blue;
+        .title{
+            color: gold;
+            
+        }
+        .des{
+            color: @color;
+        }
+        p{
+            color: @color;
+            height: 50px;
+        }
+    }
+.hot{
+    li{
+        .li-yellow(grey);
+    }
+}
+.high{
+    li{
+        .li-yellow
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

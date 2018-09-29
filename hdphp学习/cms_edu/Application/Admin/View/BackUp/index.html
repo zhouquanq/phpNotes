@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>备份管理</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/hdjs/hdjs.css"/>
+</head>
+<body>
+<div class="wrap">
+	<form action="{|U:'recovery'}" method="post">
+    <table class="hd-table hd-table-list">
+        <thead>
+        <tr>
+            <td width="150">备份时间</td>
+            <td>备份目录</td>
+            <td width="100">选择</td>
+        </tr>
+        </thead>
+        <tbody>
+        	<foreach from="$dirArr" key="$k" value="$v">
+    	   <tr>
+                <td width="50">{$v.fileatime|date:'Y-m-d H:i:s',@@}</td>
+                <td>{$v.path}</td>
+                <td width="100"><input type="radio" name="dir" value="{$v.path}" checked/></td>
+            </tr>
+            </foreach>
+        </tbody>
+    </table>
+    <div style="margin-top:20px;margin-left:20px;">
+        <input type="submit" value="还原" class="hd-btn hd-btn-success hd-btn-sm"/>
+    </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>站点配置项</title>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/hdjs/hdjs.css"/>    
+</head>
+<body>
+<div class="wrap">
+    <div class="hd-title-header">站点配置</div>
+    <form action="" method="post" class="form-inline hd-form">
+        <table class="hd-table hd-table-list">
+            <tr>
+                <th colspan="100">站点信息</th>
+            </tr>
+            <tr>
+                <td class="w100">名称</td>
+                <td class="w100">值</td>
+                <td class="w150">标题</td>
+                <td class="w150">描述</td>
+            </tr>
+            <foreach from="$data" key="$k" value="$v">
+            	<if value="$v['type_id'] eq 1">
+	            <tr>
+	                <td class="w100">{$v.name}</td>
+	                <td class="w100">
+	                	<input type="text" name="{$v.name}" id="" value="{$v.value}"/>
+	                </td>
+	                <td class="w150">{$v.title}</td>
+	                <td class="w150">{$v.des}</td>
+	            </tr>
+	            </if>
+            </foreach>
+            <tr>
+                <th colspan="100">验证码</th>
+            </tr>
+            <foreach from="$data" key="$k" value="$v">
+            	<if value="$v['type_id'] eq 2">
+	            <tr>
+	                <td class="w100">{$v.name}</td>
+	                <td class="w100">
+	                	<input type="text" name="{$v.name}" id="" value="{$v.value}"/>
+	                </td>
+	                <td class="w150">{$v.title}</td>
+	                <td class="w150">{$v.des}</td>
+	            </tr>
+	            </if>
+            </foreach>
+            <tr>
+                <th colspan="100">水印</th>
+            </tr>
+            <foreach from="$data" key="$k" value="$v">
+            	<if value="$v['type_id'] eq 3">
+	            <tr>
+	                <td class="w100">{$v.name}</td>
+	                <td class="w100">
+	                	<input type="text" name="{$v.name}" id="" value="{$v.value}"/>
+	                </td>
+	                <td class="w150">{$v.title}</td>
+	                <td class="w150">{$v.des}</td>
+	            </tr>
+	            </if>
+            </foreach>
+            <tr>
+                <th colspan="100">缩略图</th>
+            </tr>
+            <foreach from="$data" key="$k" value="$v">
+            	<if value="$v['type_id'] eq 4">
+	            <tr>
+	                <td class="w100">{$v.name}</td>
+	                <td class="w100">
+	                	<input type="text" name="{$v.name}" id="" value="{$v.value}"/>
+	                </td>
+	                <td class="w150">{$v.title}</td>
+	                <td class="w150">{$v.des}</td>
+	            </tr>
+	            </if>
+            </foreach>
+        </table>
+        <div class="position-bottom">
+            <input type="submit" class="hd-btn hd-btn-success" value="保存"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>

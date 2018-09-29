@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>分类管理</title>
+    <style type="text/css">
+        .plus_minus{
+            width: 20px;
+        }
+    </style>
+    <script src="__STATIC__/Js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/hdjs/hdjs.css"/>
+    <script src="__STATIC__/hdjs/hdjs.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap.min.css"/>
+    
+    <script type="text/javascript">
+    	$(function(){
+    		//所有子集分类隐藏
+    		$('tr[pid!=0]').hide();
+    		//点击展开和收缩
+    		$('.click-btn').toggle(function(){
+    			//获得cid
+    			var cid = $(this).parents('tr').attr('cid');
+    			//子分类显示
+    			$('tr[pid='+cid+']').show();
+    			//删除+变成-
+    			$(this).removeClass('glyphicon-plus').addClass('glyphicon-minus');
+    		},function(){
+    			//获得cid
+    			var cid = $(this).parents('tr').attr('cid');
+    			//异步
+    			$.ajax({
+    				type:"post",
+    				url:"{|U:'Admin/Category/getSon'}",
+    				data:{cid : cid},
+    				dataType:'json',
+    				success:function(phpData){
+    					$.each(phpData, function(k,v) {    
+    						//让所有子集分类的tr隐藏
+    						$('tr[cid='+v+']').hide();                                                        
+    					});
+    				}
+    			});
+    			
+    			
+    			//删除-变成+
+    			$(this).removeClass('glyphicon-minus').addClass('glyphicon-plus');
+    		})
+    		
+    	})
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <table class="hd-table hd-table-form hd-form">
+        <thead>
+        <tr pid=0>
+            <td width="30"></td>
+            <td>分类id</td>
+            <td>分类名称</td>
+            <td>分类标题</td>
+            <td>分类排序</td>
+            <td>静态目录</td>
+            <td>列表静态</td>
+            <td>内容静态</td>
+            <td>是否显示</td>
+            <td width="200">操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        	<foreach from="$data" key="$k" value="$v">
+        	<tr pid="{$v.pid}" cid="{$v.cid}">
+        		<td width="30">
+        			<a href="javascript:;" class="glyphicon glyphicon-plus click-btn"></a>
+        		</td>
+	            <td>{$v.cid}</td>
+	            <td>{$v._name}</td>
+	            <td>{$v.ctitle}</td>
+	            <td>{$v.csort}</td>
+	            <td>{$v.htmldir}</td>
+	            <td>{$v.is_listhtml}</td>
+	            <td>{$v.is_archtml}</td>
+	            <td>{$v.is_show}</td>
+	            <td width="200">
+					<a href="{|U:'Admin/Category/addSon',array('cid'=>$v['cid'])}" class="hd-btn hd-btn-success hd-btn-xm">添加子分类</a>
+					<a href="{|U:'edit',array('cid'=>$v['cid'])}" class="hd-btn hd-btn-primary hd-btn-xm">编辑</a>
+					<a href="javascript:modal({$v.cid});" class="hd-btn hd-btn-danger hd-btn-xm">删除</a>
+	            </td>
+        	</tr>
+        	</foreach>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+    	 function modal(cid) {
+	        hd_modal({
+	            width: 300,//宽度
+	            height: 150,//高度
+	            title: '确认删除吗？',//标题
+	            content: '',//提示信息
+	            button: true,//显示按钮
+	            button_success: "确定",//确定按钮文字
+	            button_cancel: "取消",//关闭按钮文字
+	            timeout: 0,//自动关闭时间 0：不自动关闭
+	            shade: true,//背景遮罩
+	            shadeOpacity: 0.4,//背景透明度
+	            success: function () {//点击确定后的事件
+					location.href="{|U:'Admin/Category/del'}" + "&cid=" + cid;
+	            },
+	            cancel: function () {//点击关闭后的事件
+					
+	            }
+	        });
+	    }
+    </script>
+    <div class="page_hdjob">
+        
+    </div>
+</div>
+
+</body>
+</html>
+
+

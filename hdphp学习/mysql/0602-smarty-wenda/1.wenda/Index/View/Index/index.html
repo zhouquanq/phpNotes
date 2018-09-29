@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>后盾问答</title>
+	<meta name="keywords" content="后盾问答"/>
+	<meta name="description" content="后盾问答"/>
+	{hd include file="../Common/header.html"}
+	<link rel="stylesheet" href="{hd $smarty.const.__PUBLIC__}/Css/index.css" />
+	{hd js file="Js/index.js"}
+	<div class='main'>
+		<div id='left'>
+			<p class='left-title'>所有问题分类</p>
+			<ul class='left-list'>
+				{hd section loop=$cateData name=t}
+				<li class='list-l1'>
+					<div class='list-l1-wrap'>
+						<h4><a href="{hd $smarty.const.__APP__}?c=List&cid={hd $cateData[t].cid}">{hd $cateData[t].title}</a></h4>
+						<ul class='list-l2'>
+							{hd section loop=$cateData[t].son name=s max=3}
+								<li><a href="">{hd $cateData[t].son[s].title}</a></li>
+							{hd /section}
+						</ul>
+					</div>
+					<!--右侧隐藏区域子集-->
+					<div class='list-more hidden'>
+						<ul>
+							{hd section loop=$cateData[t].son name=s start=3}
+								<li><a href="">{hd $cateData[t].son[s].title}</a></li>
+							{hd /section}
+						</ul>
+					</div>
+				</li>
+				{hd /section}
+			</ul>
+		</div>
+
+		<div id='center'>
+			<div id='animate'>
+				<div class='imgs-wrap'>
+					<ul>
+						<li>
+							<a href=""><img src="{hd $smarty.const.__PUBLIC__}/Images/animate1.jpg" width='558' height='190'/></a>
+						</li>
+						<li>
+							<a href=""><img src="{hd $smarty.const.__PUBLIC__}/Images/animate2.jpg" width='558' height='190'/></a>
+						</li>
+						<li>
+							<a href=""><img src="{hd $smarty.const.__PUBLIC__}/Images/animate3.jpg" width='558' height='190'/></a>
+						</li>
+					</ul>
+				</div>
+				<ul class='ani-btn'>
+					<li class='ani-btn-cur'>0学费学习<i></i></li>
+					<li>超百G原创视频<i></i></li>
+					<li style='border:none'>有实力做后盾<i></i></li>
+				</ul>
+			</div>
+
+			<dl class='answer-list'>
+				<dt>
+					<span class='wait-as'>待解决问题</span>
+					<a href=''>更多>></a>
+				</dt>
+				{hd foreach from=$noSolve item=v}
+				<dd>
+					<a href="">{hd $v.content|truncate_d}</a>
+					<span>{hd $v.answer}回答</span>
+				</dd>
+				{hd /foreach}
+			</dl>
+
+			<dl class='answer-list'>
+				<dt>
+					<span class='reward-as'>高分悬赏问题</span>
+					<a href=''>更多>></a>
+				</dt>
+				{hd high rows=3}
+					<dd>
+						<a href=""><b>[$field.reward]</b>[$field.content]</a>
+						<span>[$field.answer]回答</span>
+					</dd>
+				{hd /high}
+			</dl>
+
+		</div>
+		<!-- 右侧 -->
+		<div id='right'>
+		<!--<div class='userinfo'>
+			<dl>
+				<dt>
+					<a href=""><img src="" width='48' height='48' alt="占位符"/></a>
+				</dt>
+				<dd class='username'>
+					<a href="">
+						<b></b>
+					</a>
+					<a href="">
+						<i class='level lv1' title='Level 1'></i>
+					</a>
+				</dd>
+				<dd>金币：<a href="" style="color: #888888;">20<b class='point'></b></a></dd>
+				<dd>经验值：200</dd>
+			</dl>
+			<table>
+				<tr>
+					<td>回答数</td>
+					<td>采纳率</td>
+					<td class='last'>提问数</td>
+				</tr>
+				<tr>
+					<td><a href="">200</a></td>
+					<td><a href="">20%</a></td>
+					<td class='last'><a href="">回答数</a></td>
+				</tr>
+			</table>
+			<ul>
+				<li><a href="">我提问的</a></li>
+				<li><a href="">我回答的</a></li>
+			</ul>
+		</div>-->
+		
+		 <div class='r-login'>
+			<span class='login'><i></i>&nbsp;登录</span>
+			<span class='register'><i></i>&nbsp;注册</span>
+		</div> 
+		
+	<div class='clear'></div>
+	<div class='star'>
+		<p class='title'>后盾问答之星</p>
+		<span class='star-name'>本日回答问题最多的人</span>
+			<div class='star-info'>
+				<div>
+					<a href="" class='star-face'>
+						<img src="" width='48px' height='48px' alt="头像站位"/>
+					</a>
+					<ul>
+						<li><a href="">后盾网</a></li>
+						<i class='level lv1' title='Level 1'></i>
+					</ul>
+				</div>
+				<ul class='star-count'>
+					<li>回答数：<span>100</span></li>
+					<li>采纳率：<span>20%</span></li>
+				</ul>
+			</div>
+		<span class='star-name'>历史回答问题最多的人</span>
+
+		<div class='star-info'>
+			<div>
+				<a href="" class='star-face'>
+					<img src="" width='48px' height='48px' alt="头像站位"/>
+				</a>
+				<ul>
+					<li><a href="">后盾网</a></li>
+					<i class='level lv1' title='Level 1'></i>
+				</ul>
+			</div>
+			<ul class='star-count'>
+				<li>回答数：<span>200</span></li>
+				<li>采纳率：<span>100%</span></li>
+			</ul>
+		</div>
+	</div>
+	<div class='star-list'>
+		<p class='title'>后盾问答助人光荣榜</p>
+		<div>
+			<ul class='ul-title'>
+				<li>用户名</li>
+				<li style='text-align:right;'>帮助过的人数</li>
+			</ul>
+			<ul class='ul-list'>
+				<li>
+					<a href=""><i class='rank r1'></i>houdunwang.com</a>
+					<span>100</span>
+				</li>
+				<li>
+					<a href=""><i class='rank r2'></i>houdunwang.com</a>
+					<span>100</span>
+				</li>
+				<li>
+					<a href=""><i class='rank r3'></i>houdunwang.com</a>
+					<span>100</span>
+				</li>				
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- ---右侧结束---- -->
+	</div>
+<!--------------------内容主体结束-------------------->
+	<div class='clear'></div>
+	
+<!-- 底部 -->
+	<div id='bottom'>
+		<p>Copyright © 2013 Qihoo.Com All Rights Reserved 后盾网</p>
+		<p>京公安网备xxxxxxxxxxxx</p>
+	</div>
+<!--[if IE 6]>
+    <script type="text/javascript" src="{hd $smarty.const.__PUBLIC__}/Js/iepng.js"></script>
+    <script type="text/javascript">
+    	DD_belatedPNG.fix('.logo','background');
+        DD_belatedPNG.fix('.nav-sel a','background');
+        DD_belatedPNG.fix('.ask-cate i','background');
+    </script>
+<![endif]-->
+</body>
+</html>
+<!-- 底部结束 -->

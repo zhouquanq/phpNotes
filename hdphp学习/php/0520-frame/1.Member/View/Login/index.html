@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>登陆</title>
+		<script src="jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//点击切换验证码
+			$(function(){
+				//获得图片地址
+				var imgSrc = $('#code').attr('src');
+				$('#code').click(function(){
+					//点击更改图片地址
+					$(this).attr('src',imgSrc + '&rand=' + Math.random());
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<form action="" method="post">
+			用户名：<input type="text" name="username" id="" />
+			<br />
+			密码： <input type="password" name="password" id="" />
+			<br />
+			<input type="checkbox" name="auto" id="" /> 7天自动登陆
+			<br />
+			验证码：<input type="text" name="code" id="" /> <img src="./index.php?c=Login&a=code" id="code"/>
+			<br />
+			<input type="submit" value="登陆"/>
+			<br />
+			<a href="./index.php">返回首页</a>
+			
+		</form>
+		
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>
