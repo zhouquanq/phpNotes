@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<title>Document</title>
+		<link rel="stylesheet" href="__PUBLIC__/Less/list.css" />
+	</head>
+	<body>
+		<div id="box-menu">
+			<div class="menu">
+				<ul>
+					<li><a href="{|U:'Index/index'}">首页</a>
+					</li>
+					<foreach from="$topCate" key="$k" value="$v">
+					<li>
+						<a href="{|U:'List/index',array('cid'=>$v['cid'])}" <if value="$_GET['cid'] eq $v['cid']">class="hover"</if>>{$v.cname}</a>
+					</li>
+					</foreach>
+				</ul>
+			</div>
+		</div>
+		<div id="attr-box">
+			<div class="attr">
+				<ul>
+					<foreach from="$tempFinalAttr" value="$v" key="$k">
+						<li class="attr-border">
+							<h2>{$v.name}：</h2>
+							<ul class="attr-content">
+								<?php 
+									//赋值给临时变量为了不破坏$param
+									$temp = $param;
+									//为了不限而准备的
+									$temp[$k] = 0;
+								 ?>
+								<li>
+									<a href="{|U:'List/index',array('cid'=>$_GET['cid'],'param'=>implode('_',$temp))}" <if value="$param[$k] eq 0">class="hover"</if> >不限</a>
+								</li>
+								<foreach from="$v['value']" key="$kk" value="$vv">
+								<?php 
+									$temp[$k] = $vv['gtid'];
+								 ?>
+								<li>
+									<a href="{|U:'List/index',array('cid'=>$_GET['cid'],'param'=>implode('_',$temp))}" <if value="$param[$k] eq $vv['gtid']">class="hover"</if> >{$vv.gtvalue}</a>
+								</li>
+								</foreach>
+							</ul>
+						</li>
+					</foreach>
+				</ul>
+			</div>
+		</div>
+		<div id="content">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+
+	</body>
+
+</html>

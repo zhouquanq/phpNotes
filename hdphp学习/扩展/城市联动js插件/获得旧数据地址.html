@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<script language="javascript" src="address.js"></script>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script language="javascript">
+var s=["s1","s2","s3"];
+var opt0 = ["请选择省","请选择市","请选择县（区）"];
+function setup(){
+ for(i=0;i<s.length-1;i++)
+  document.getElementById(s[i]).onclick=new Function("change("+(i+1)+")");
+ change(0);
+}
+window.onload=function(){
+setup()	
+	
+};
+$(function(){
+	
+	$('.dj').live('click',function(){
+		var dj = $('#s1').val() + '省,' + $('#s2').val() + '市,' + $('#s3').val();
+		alert(dj);	
+	})
+
+
+})
+</script>
+
+<select id="s1" name="province">
+	<option>省份</option>
+</select>
+<select id="s2" name="city">
+	<option>地级市</option>
+</select>
+<select id="s3" name="county">
+	<option>市、县级市、县</option>
+</select>
+<input type="button" value="点击"  class="dj"/>
+</body>
+</html>
+<script type="text/javascript">
+	change(0);
+	function initArea(){
+		// alert($('#s1').find("option[value='北京']").length);
+		$('#s1').find("option[value='北京']").click();
+	}
+	initArea();
+</script>

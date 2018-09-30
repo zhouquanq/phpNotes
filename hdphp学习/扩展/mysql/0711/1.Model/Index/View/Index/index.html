@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<table border="1" cellspacing="" cellpadding="">
+			
+			<tr>
+				<td>商品名称</td>
+				<td>商品价格</td>
+				<td>
+					操作
+				</td>
+			</tr>
+			{hd foreach from=$data key=k item=v}
+			<tr>
+				<td>{hd $v.gname}</td>
+				<td>{hd $v.shopprice}</td>
+				<td>
+					<a href="{hd $smarty.const.__APP__}?a=edit&gid={hd $v.gid}">编辑</a>
+					<a href="{hd $smarty.const.__APP__}?a=del&gid={hd $v.gid}">删除</a>
+				</td>
+			</tr>
+			{hd /foreach}
+		</table>
+		<form action="" method="post">
+			商品名称：<input type="text" name="gname" id="" />
+			<br />
+			市场价格：<input type="text" name="marketprice" id="" />
+			<br />
+			商品价格：<input type="text" name="shopprice" id="" />
+			<br />
+			<input type="submit" value="添加"/>
+		</form>
+	</body>
+</html>

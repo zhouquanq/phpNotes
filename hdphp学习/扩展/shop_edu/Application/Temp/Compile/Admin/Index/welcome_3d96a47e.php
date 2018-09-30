@@ -1,0 +1,52 @@
+<?php if(!defined('HDPHP_PATH'))exit;C('SHOW_NOTICE',FALSE);?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>HDSHOP 系统信息</title>
+	<link rel="stylesheet" href="http://127.0.0.1/project/shop_edu/Application/Admin/View/Public/Css/copy.css" />
+	<script type="text/javascript" src='http://127.0.0.1/project/shop_edu/Application/Admin/View/Public/Js/jquery-1.8.2.min.js'></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			$('#main').fadeIn(2000);
+		}
+	</script>
+</head>
+<body>
+	<div id='main'>
+		<dl>
+			<dt>个人信息</dt>
+			<dd>上一次登录时间：<span>2012-12-12 12:12</span></dd>
+			<dd>上一次登录IP：<span>192.168.1.1</span></dd>
+			<dd>本次登录时间：<span>2012-12-12 12:12</span></dd>
+			<dd>本次登录IP：<span>192.168.1.1</span></dd>
+		</dl>
+		<dl>
+			<dt>服务器信息</dt>
+			<dd>操作系统：<span>Linux</span></dd>
+			<dd>PHP版本： <span>5.3.5</span></dd>
+			<dd>服务器环境：<span>Apache 2.2.2</span></dd>
+			<dd>数据库信息：<span>MySQL 5.2.8</span></dd>
+		</dl>
+		<dl>
+			<dt>商品信息</dt>
+			<dd>上架商品：<span>1000</span>件</dd>
+			<dd>下架商品：<span>300</span>件</dd>
+			<dd>总库存：<span>600</span>件</dd>
+		</dl>
+		<dl>
+			<dt>订单信息</dt>
+			<dd>待付款订单：<span>300</span>条</dd>
+			<dd>待发货订单：<span>60</span>条</dd>
+			<dd>已发仙订单：<span>200</span>条</dd>
+			<dd>已完成订单：<span>800</span>条</dd>
+		</dl>
+		<dl id="pv">
+			<dt>PV信息</dt>
+			<dd>今日访问人数：<span>600</span></dd>
+			<dd>现有会员数量：<span>10000</span></dd>
+			<dd>历史访问人数：<span>100000</span></dd>
+		</dl>
+	</div>
+</body>
+</html>

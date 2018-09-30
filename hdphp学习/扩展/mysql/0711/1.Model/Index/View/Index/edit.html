@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="" method="post">
+			商品名称：<input type="text" name="gname" id="" value="{hd $oldData.gname}"/>
+			<br />
+			市场价格：<input type="text" name="marketprice" id="" />
+			<br />
+			商品价格：<input type="text" name="shopprice" id="" />
+			<br />
+			<input type="hidden" name="gid" value="{hd $smarty.get.gid}"/>
+			<input type="submit" value="修改"/>
+		</form>
+	</body>
+</html>

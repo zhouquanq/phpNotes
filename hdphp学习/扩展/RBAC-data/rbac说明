@@ -1,0 +1,25 @@
+ nid: 1
+ name: admin   //模块或者是控制器或者是方法的名称
+title: NULL
+state: 1       //开启
+  des: NULL
+ sort: 100
+  pid: 0       //父级id
+level: 1       //level为1的时候是模块，为2的时候控制器，3是方法
+
+
+**********
+  nid: 2
+ name: cate
+title: NULL
+state: 1
+  des: NULL
+ sort: 100
+  pid: 1
+level: 2
+
+
+
+
+
+
